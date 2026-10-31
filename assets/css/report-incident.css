@@ -1,8 +1,5 @@
 @import url('styles.css');
 
-/*  ==========================================================================
-                            VARIABLES (:root)
-    ========================================================================== */
 :root {
     --fs-hero-title: 1.75rem;
     --fs-hero-subtitle: 0.95rem;
@@ -18,71 +15,12 @@
     --neutral-color: #0f172a;
     --background-color: #f8fafc;
     --text-color: #ffffff;
-    --error-color: #ff4d4d;
-
-    --severity-high-bg: #dc2626;
-    --severity-medium-bg: #ea580c;
-    --severity-low-bg: #0284c7;
-
-    --status-active-bg: #e2e8f0;
-    --status-active-text: #334155;
-    --status-progress-bg: #f97316;
 
     --card-bg: #ffffff;
     --card-border: #e2e8f0;
     --text-muted: #64748b;
-    --success-color: #16a34a;
 }
 
-
-/*  ==========================================================================
-                            TAMAÑOS DE FUENTE
-    ========================================================================== */
-.report-title {
-    font-size: 1.75rem;
-}
-
-.report-subtitle {
-    font-size: var(--fs-hero-subtitle);
-}
-
-.char-counter,
-.file-status,
-.dropzone-subtitle {
-    font-size: 0.75rem;
-}
-
-.text-input,
-.textarea-input,
-.category-btn {
-    font-size: var(--fs-body);
-}
-
-.gps-btn {
-    font-size: var(--fs-small);
-}
-
-.dropzone-title {
-    font-size: 0.9rem;
-}
-
-.file-name {
-    font-size: 0.85rem;
-}
-
-.btn-cancel,
-.btn-submit {
-    font-size: var(--fs-btn);
-}
-
-.privacy-note,
-.step-label {
-    font-size: 0.8rem;
-}
-
-/*  ==========================================================================
-                        ESTILOS DE REGISTRAR INCIDENTE
-    ========================================================================== */
 .report-main-container {
     width: 90%;
     max-width: 680px;
@@ -92,7 +30,6 @@
     align-items: center;
 }
 
-/* 3.1. Encabezado */
 .report-header-section {
     text-align: center;
     margin-bottom: 1.75rem;
@@ -111,17 +48,18 @@
 }
 
 .report-title {
+    font-size: 1.75rem;
     font-weight: 800;
     color: var(--neutral-color);
     margin: 0 0 0.35rem 0;
 }
 
 .report-subtitle {
+    font-size: var(--fs-hero-subtitle);
     color: var(--text-muted);
     margin: 0;
 }
 
-/* 3.2. Tarjeta Contenedora del Formulario */
 .form-card {
     width: 100%;
     background-color: #ffffff;
@@ -138,7 +76,6 @@
     gap: 1.75rem;
 }
 
-/* Etiquetas y Pasos */
 .form-step {
     display: flex;
     flex-direction: column;
@@ -152,25 +89,16 @@
 }
 
 .step-label {
+    font-size: 0.8rem;
     font-weight: 800;
     color: var(--text-muted);
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
 
-.required-asterisk {
-    color: #ef4444;
-}
-
-.optional-tag {
-    font-weight: 400;
-    text-transform: lowercase;
-    color: #94a3b8;
-}
-
-.char-counter {
-    color: #94a3b8;
-}
+.required-asterisk { color: #ef4444; }
+.optional-tag { font-weight: 400; text-transform: lowercase; color: #94a3b8; }
+.char-counter { font-size: 0.75rem; color: #94a3b8; }
 
 /* Grilla de Categorías */
 .category-grid {
@@ -187,6 +115,7 @@
     background-color: #f8fafc;
     border: 1px solid var(--card-border);
     border-radius: 0.75rem;
+    font-size: var(--fs-body);
     font-weight: 600;
     color: var(--neutral-color);
     cursor: pointer;
@@ -204,7 +133,6 @@
     color: var(--primary-color);
 }
 
-/* Botón GPS */
 .gps-btn {
     display: inline-flex;
     align-items: center;
@@ -212,15 +140,13 @@
     background: transparent;
     border: none;
     color: var(--primary-color);
+    font-size: var(--fs-small);
     font-weight: 700;
     cursor: pointer;
 }
 
-.gps-btn:hover {
-    text-decoration: underline;
-}
+.gps-btn:hover { text-decoration: underline; }
 
-/* Inputs y Textareas */
 .input-with-icon {
     position: relative;
     display: flex;
@@ -233,9 +159,9 @@
     color: #94a3b8;
 }
 
-.text-input {
+.text-input, .textarea-input {
     width: 100%;
-    padding: 0.85rem 1rem 0.85rem 2.75rem;
+    font-size: var(--fs-body);
     border: 1px solid var(--card-border);
     border-radius: 0.75rem;
     color: var(--neutral-color);
@@ -245,30 +171,16 @@
     transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.text-input:focus,
-.textarea-input:focus {
+.text-input { padding: 0.85rem 1rem 0.85rem 2.75rem; }
+.textarea-input { padding: 0.85rem 1rem; resize: vertical; font-family: inherit; }
+
+.text-input:focus, .textarea-input:focus {
     border-color: var(--primary-color);
     background-color: #ffffff;
 }
 
-.textarea-input {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 1px solid var(--card-border);
-    border-radius: 0.75rem;
-    color: var(--neutral-color);
-    background-color: #f8fafc;
-    outline: none;
-    resize: vertical;
-    box-sizing: border-box;
-    font-family: inherit;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-/* Carga de Archivos / Dropzone */
-.file-input-hidden {
-    display: none;
-}
+/* Carga de Archivos */
+.file-input-hidden { display: none; }
 
 .upload-dropzone {
     border: 2px dashed #cbd5e1;
@@ -276,7 +188,7 @@
     padding: 1.25rem;
     background-color: #f8fafc;
     text-align: center;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    transition: border-color 0.2s ease;
 }
 
 .dropzone-trigger {
@@ -296,6 +208,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .dropzone-text {
@@ -304,16 +217,10 @@
     text-align: left;
 }
 
-.dropzone-title {
-    font-weight: 700;
-    color: var(--neutral-color);
-}
+.dropzone-title { font-size: 0.9rem; font-weight: 700; color: var(--neutral-color); }
+.dropzone-subtitle { font-size: 0.75rem; color: #94a3b8; }
 
-.dropzone-subtitle {
-    color: #94a3b8;
-}
-
-/* Vista previa de archivo */
+/* Vista Previa del Archivo */
 .uploaded-file-preview {
     display: flex;
     align-items: center;
@@ -323,6 +230,7 @@
     border-radius: 0.75rem;
     padding: 0.6rem 0.85rem;
     margin-top: 0.5rem;
+    overflow: hidden;
 }
 
 .preview-thumbnail {
@@ -330,22 +238,26 @@
     height: 2.75rem;
     border-radius: 0.5rem;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .file-info {
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 0; /* Permite truncar o ajustar texto largo */
 }
 
 .file-name {
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--neutral-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Corta nombres largos con '...' para que no se desborde */
 }
 
-.file-status {
-    color: #64748b;
-}
+.file-status { font-size: 0.75rem; color: #64748b; }
 
 .remove-file-btn {
     background: transparent;
@@ -354,11 +266,10 @@
     cursor: pointer;
     padding: 0.25rem;
     border-radius: 0.25rem;
+    flex-shrink: 0;
 }
 
-.remove-file-btn:hover {
-    color: #ef4444;
-}
+.remove-file-btn:hover { color: #ef4444; }
 
 /* Botones de Acción */
 .form-actions {
@@ -369,69 +280,47 @@
     padding-top: 0.5rem;
 }
 
-.btn-cancel {
-    padding: 0.75rem 1.25rem;
-    border-radius: 0.6rem;
-    background-color: #f1f5f9;
-    color: var(--neutral-color);
-    text-decoration: none;
+.btn-cancel, .btn-submit {
+    font-size: var(--fs-btn);
     font-weight: 700;
+    border-radius: 0.6rem;
+    cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-.btn-cancel:hover {
-    background-color: #e2e8f0;
+.btn-cancel {
+    padding: 0.75rem 1.25rem;
+    background-color: #f1f5f9;
+    color: var(--neutral-color);
+    text-decoration: none;
 }
+
+.btn-cancel:hover { background-color: #e2e8f0; }
 
 .btn-submit {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    border-radius: 0.6rem;
     background-color: var(--primary-color);
     color: #ffffff;
     border: none;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
-.btn-submit:hover {
-    background-color: #1e40af;
-}
+.btn-submit:hover { background-color: #1e40af; }
 
-/* Nota de Privacidad al Pie */
 .privacy-note {
     display: flex;
     align-items: center;
     gap: 0.4rem;
+    font-size: 0.8rem;
     color: #94a3b8;
     margin-top: 1.25rem;
 }
 
-/*  ==========================================================================
-                                MEDIA QUERIES
-   ========================================================================== */
 @media (max-width: 640px) {
-    .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .form-card {
-        padding: 1.25rem;
-    }
-
-    .form-actions {
-        flex-direction: column-reverse;
-        width: 100%;
-    }
-
-    .btn-cancel,
-    .btn-submit {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-        box-sizing: border-box;
-    }
+    .category-grid { grid-template-columns: repeat(2, 1fr); }
+    .form-card { padding: 1.25rem; }
+    .form-actions { flex-direction: column-reverse; width: 100%; }
+    .btn-cancel, .btn-submit { width: 100%; justify-content: center; text-align: center; box-sizing: border-box; }
 }

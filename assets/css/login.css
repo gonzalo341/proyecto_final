@@ -1,7 +1,8 @@
-@import url(styles.css);
-/*  ==========================================================================
-                            VARIABLES (:root)
-    ========================================================================== */
+@import url('styles.css');
+
+/* ==========================================================================
+   VARIABLES Y ESTILOS BASE DE LOGIN / REGISTRO
+   ========================================================================== */
 :root {
     --fs-hero-title: 1.75rem;
     --fs-hero-subtitle: 0.95rem;
@@ -17,43 +18,33 @@
     --neutral-color: #0f172a;
     --background-color: #f8fafc;
     --text-color: #ffffff;
-    --error-color: #ff4d4d;
+    --error-color: #dc2626;
+    --success-color: #16a34a;
 
-    --severity-high-bg: #dc2626;
-    --severity-medium-bg: #ea580c;
-    --severity-low-bg: #0284c7;
-    
-    --status-active-bg: #e2e8f0;
-    --status-active-text: #334155;
-    --status-progress-bg: #f97316;
-    
     --card-bg: #ffffff;
     --card-border: #e2e8f0;
     --text-muted: #64748b;
-    --success-color: #16a34a;
 }
 
-/*  ==========================================================================
-            Contenedor Principal (Tarjeta de Login / Registro)
-    ========================================================================== */
-
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL Y TARJETA (TAB CONTAINER)
+   ========================================================================== */
 .tab-container {
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 12px;
     margin: 2rem auto;
-    box-shadow: 2px 6px 6px rgba(0, 0, 0, 0.2);
-    height: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     width: 95%;
-    max-width: 500px; 
+    max-width: 650px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
-/*  ==========================================================================
-            Pestañas Superiores (Tabs)
-    ========================================================================== */
-
+/* ==========================================================================
+   PESTAÑAS SUPERIORES (TABS)
+   ========================================================================== */
 .tab-list {
     display: flex;
     flex-direction: row;
@@ -62,26 +53,34 @@
     margin: 0;
     padding: 0;
     color: var(--text-color);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    list-style: none;
+    background-color: var(--primary-color);
 }
 
 .tab-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1rem;
+    padding: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    list-style: none;
-    height: 100%;
-    width: 100%;
-    border-radius: 10px 10px 0 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 50%;
     text-align: center;
+    user-select: none;
+    opacity: 0.8;
+}
+
+.tab-item:hover {
+    opacity: 1;
 }
 
 .option-active {
-    background-color: var(--secondary-color);
-    cursor: pointer;
+    background-color: var(--background-color);
+    color: var(--neutral-color);
+    font-weight: 700;
+    opacity: 1;
 }
 
 .option-active.login-tab {
@@ -92,15 +91,13 @@
     border-radius: 0 10px 0 0;
 }
 
-/*  ==========================================================================
-            Cuerpo del Formulario
-    ========================================================================== */
-
+/* ==========================================================================
+   CUERPO Y FORMULARIOS
+   ========================================================================== */
 .content-container {
-    padding: 1.5rem;
+    padding: 2rem;
     background-color: var(--background-color);
-    border-radius: 0 0 10px 10px;
-    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 12px 12px;
 }
 
 .content {
@@ -115,70 +112,122 @@
 .content form {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem; 
+    gap: 0.75rem;
 }
 
-.content form label {
+/* Grilla para el formulario de registro */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.form-group {
     display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-weight: 500;
-    cursor: pointer;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
 }
 
-.content form .btn {
-    display: block;
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--neutral-color);
+    margin: 0;
+}
+
+.form-group input,
+.form-group select {
     width: 100%;
+    padding: 0.65rem 0.85rem;
+    font-size: var(--fs-body);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
     box-sizing: border-box;
-    margin-top: 0.5rem;
+    background-color: #ffffff;
+    color: var(--neutral-color);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/*  ==========================================================================
-            Media Queries
-    ========================================================================== */
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+}
 
-@media (max-width: 480px) {
-    .tab-list {
-        font-size: 1.1rem;
-    }
+.form-group select:disabled {
+    background-color: #f1f5f9;
+    cursor: not-allowed;
+    color: var(--text-muted);
+}
 
-    .tab-item {
-        padding: 0.75rem 0.5rem;
+/* Botones */
+.btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    font-size: var(--fs-btn);
+    font-weight: 700;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-submit:hover {
+    background-color: #1e293b;
+}
+
+.btn-submit:active {
+    transform: scale(0.99);
+}
+
+/* ==========================================================================
+   MENSAJES Y ALERTAS
+   ========================================================================== */
+.login-mensaje {
+    margin: 0.75rem 0;
+    padding: 0.75rem;
+    border-radius: 6px;
+    text-align: center;
+    font-size: var(--fs-small);
+    font-weight: 600;
+}
+
+.login-mensaje.error {
+    color: #9b1c1c;
+    background-color: #fde8e8;
+    border: 1px solid #f8b4b4;
+}
+
+.login-mensaje.exito {
+    color: #03543f;
+    background-color: #def7ec;
+    border: 1px solid #84e1bc;
+}
+
+.login-mensaje[hidden] {
+    display: none !important;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 580px) {
+    .tab-container {
+        width: 100%;
+        margin: 1rem auto;
+        border-radius: 0;
     }
 
     .content-container {
         padding: 1.25rem 1rem;
     }
-    
-    .form-checkbox {
-        transform: scale(1.1);
+
+    .form-grid {
+        grid-template-columns: 1fr;
     }
-}
-
-#reg-error-message[hidden] {
-    display: none !important;
-}
-
-.login-mensaje {
-    margin: 0 0 12px;
-    padding: 10px;
-    border-radius: 6px;
-    text-align: center;
-    font-size: 14px;
-}
-
-.login-mensaje.error {
-    color: #b91c1c;
-    background-color: #fee2e2;
-    border: 1px solid #fca5a5;
-}
-
-.login-mensaje.exito {
-    color: #166534;
-    background-color: #dcfce7;
-    border: 1px solid #86efac;
-}
-
-.login-mensaje[hidden] {
-    display: none;
 }
